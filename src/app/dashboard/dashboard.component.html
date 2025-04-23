@@ -1,0 +1,15 @@
+<h1>Dashboard</h1>
+<div class="authContainer">
+  <button type="button" (click)="toggleAuthUser()">
+    @if(userLoggedIn){
+    <span>Logout</span>
+    } @else {
+    <span>Login</span>
+    }
+  </button>
+</div>
+@if(userLoggedIn){
+<p>You are Logged IN 😊</p>
+}@else {
+<p>You are Logged OUT 😎</p>
+}
