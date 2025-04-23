@@ -5,6 +5,7 @@ import { PageComponent } from './page/page.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './settings/profile/profile.component';
 import { authGuard } from './auth.guard';
+import { pageResolver } from './data.resolver';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -28,7 +29,14 @@ export const routes: Routes = [
     ],
     canActivate: [authGuard()], // Guard to protect the settings route
   },
-  { path: 'pages/:pageId', component: PageComponent }, // Route with a parameter
+  {
+    path: 'pages/:pageId',
+    component: PageComponent,
+    resolve: {
+      page: pageResolver,
+    },
+  },
+
   {
     path: 'old-pages/:pageId',
     redirectTo: (route) => {
